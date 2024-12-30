@@ -47,34 +47,41 @@ step-6 Run the program.
 
 **PROGRAM**
 
-/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by:KAMLESH.Y RegisterNumber:24003690
-*/
+Program for flipflops and verify its truth table in quartus using Verilog programming. 
+Developed by:KAMLESH.Y 
+RegisterNumber:24003690
+
 ```
-module exp7 (j, k, clk, rst, q);
-  input j, k, clk, rst;
-  output reg q;
-  always @(posedge clk or posedge rst) begin
-    if (rst)
-      q <= 0; // Reset the flip-flop
-    else if (j == 0 && k == 0)
-      q <= q; // No change
-    else if (j == 0 && k == 1)
-      q <= 0; // Reset
-    else if (j == 1 && k == 0)
-      q <= 1; // Set
-    else if (j == 1 && k == 1)
-      q <= ~q; // Toggle
-  end
+module exp7(j,k,clk,q,qbar);
+input j,k,clk;
+output reg q,qbar;
+initial 
+begin
+q=1'b0;
+q=1'b1;
+end 
+
+always @(posedge clk)
+begin 
+q<=(j&~q)|(~k&q);
+qbar<=~q;
+end
+endmodule
 ```
 
 **RTL LOGIC FOR FLIPFLOPS**
-![image](https://github.com/user-attachments/assets/a8471dd4-55ce-4a0a-bb80-4710d55651e3)
 
-**TIMING DIGRAMS FOR FLIP FLOPS**
-![image](https://github.com/user-attachments/assets/618399f2-fdca-4f4d-b438-eb129e171b8a)
+![image](https://github.com/user-attachments/assets/6f902bd6-a943-456c-be80-f2a608abe9db)
+
+**TIMING DIAGRAM FOR FLIP FLOPS**
+
+![image](https://github.com/user-attachments/assets/6a8c3730-e6b8-49e0-bdc6-d257b8804316)
 
 
 **RESULTS**
-Thus,the code executed successfully.
+
+Thus JK flipflop is implemented using verilog and their functionality using their functional tables is validated.
+
+
 
 
